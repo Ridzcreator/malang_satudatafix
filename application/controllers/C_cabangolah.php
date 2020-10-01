@@ -72,6 +72,7 @@ class C_cabangolah extends CI_Controller {
     }else if($grafikp=="area"){
       $this->load->view('cabangolahraga/grafik_perbandingan_cabangolah_area_all', $data);
       $this->load->view('template/footer');
+    }
     }else{
     if($grafikp=="bar"){
     $this->load->view('cabangolahraga/grafik_perbandingan_cabangolah_bar', $data);

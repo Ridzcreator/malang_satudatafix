@@ -227,7 +227,18 @@
                                                     <td><label >Kecamatan</label></td>
                                                     <td>:</td>
                                                     <td>
-                                                        <select name="kecamatan" id="kecamatan" style="width:335px;" class="form-control" required onChange="tampilDesa()">
+                                                        <select name="kecamatan"  style="width:335px;" class="form-control" disabled>
+                                                        <option disabled selected value> Pilih Kecamatan </option>
+                                                        <?php 
+                                                        foreach ($datas->result_array() as $a){
+                                                            $nama_kecamatan=$a['nama_kecamatan'];
+                                                            ?>
+                                                            <option value="<?php echo $nama_kecamatan; ?>" <?=$nama_kecamatan== $kecamatan? "selected" : null ?>> <?php echo $nama_kecamatan; ?> </option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </td>
+                                                    <td hidden>
+                                                        <select name="kecamatan" id="kecamatan" style="width:335px;" class="form-control" required >
                                                         <option disabled selected value> Pilih Kecamatan </option>
                                                         <?php 
                                                         foreach ($datas->result_array() as $a){
@@ -242,16 +253,17 @@
                                                     <td><label >Desa</label></td>
                                                     <td>:</td>
                                                     <td>
-                                                        <select name="desa" id="desa" style="width:335px;" class="form-control" required>
+                                                        <select name="desa" style="width:335px;" class="form-control" required>
                                                         <option disabled selected value> Pilih Desa </option>
                                                         <?php 
                                                         foreach ($datad->result_array() as $a){
                                                             if ($a['nama_kecamatan'] == $kecamatan) {
                                                                 $nama_desa=$a['nama_desa'];
                                                                 $id_desa=$a['id_desa'];
-                                                                // echo '<script>alert("'.$a['nama_kecamatan'].'")</script>';
+                                                                // echo '<script>alert("'.$desa.'")</script>';
                                                             ?>
-                                                            <option value="<?php echo $nama_desa; ?>" <?=$id_desa== $desa_id? "selected" : null ?>> <?php echo $nama_desa; ?> </option>
+
+                                                            <option value="<?php echo $id_desa; ?>" <?=$id_desa== $desa? "selected" : null ?>> <?php echo $nama_desa; ?> </option>
                                                             <?php }} ?>
                                                         </select>
                                                     </td>
