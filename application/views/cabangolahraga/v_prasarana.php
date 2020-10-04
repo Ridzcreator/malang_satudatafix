@@ -99,6 +99,7 @@
                         <option disabled selected value>Pilih Model Grafik</option>
                         <option value="bar">Grafik Bar</option>
                         <option value="line">Grafik Line</option>
+                        <option value="area">Grafik Area</option>
                         </select></td>
                         </tr>
                         <tr>

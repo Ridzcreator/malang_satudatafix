@@ -87,11 +87,11 @@ class m_produksi_telur extends CI_Model
 		return $hasil;
 	}
 
-	public function proses_ubah_produksi_telur($id, $kecamatan, $nama_unggas, $tahun, $per_butir, $per_kg, $penginput){
+	public function proses_ubah_produksi_telur($id, $kecamatan, $desa, $nama_unggas, $tahun, $per_butir, $per_kg, $penginput){
 		$jumlah=0;
 		$jumlah=$per_butir+$per_kg;
 		$hasil=$this->db->query("UPDATE produksi_telur 
-			SET kecamatan='$kecamatan', hewan='$nama_unggas', tahun='$tahun', per_butir='$per_butir', per_kg='$per_kg', jumlah='$jumlah', penginput='$penginput' where id='$id'");
+			SET kecamatan='$kecamatan', desa='$desa', hewan='$nama_unggas', tahun='$tahun', per_butir='$per_butir', per_kg='$per_kg', jumlah='$jumlah', penginput='$penginput' where id='$id'");
 		return $hasil;
 	}
 
@@ -99,6 +99,11 @@ class m_produksi_telur extends CI_Model
 		$status=1;
 		$hasil=$this->db->query("UPDATE produksi_telur SET status='$status' where id='$id'");
 		return $hasil;
+	}
+
+	public function grafik_perbandingan_produksi_telur($tahun2, $tahun1){
+		$hsl=$this->db->query("SELECT id, tahun, penginput, sum(per_butir) as per_butir, sum(per_kg) as per_kg, sum(jumlah) as jumlah FROM produksi_telur WHERE status='0' and tahun BETWEEN '$tahun1' AND '$tahun2' GROUP BY tahun");	
+		return $hsl;  
 	}
 
 	// public function crosstab_produksi_telur($id){

@@ -126,6 +126,9 @@ class C_prasarana extends CI_Controller {
     }else if($grafikp=="line"){
     $this->load->view('cabangolahraga/grafik_perbandingan_prasarana_line_all', $data);
     $this->load->view('template/footer');
+    }else if($grafikp=="area"){
+      $this->load->view('cabangolahraga/grafik_perbandingan_prasarana_area_all', $data);
+      $this->load->view('template/footer');
     }
     }else{
     if($grafikp=="bar"){
@@ -134,7 +137,10 @@ class C_prasarana extends CI_Controller {
     }else if($grafikp=="line"){
     $this->load->view('cabangolahraga/grafik_perbandingan_prasarana_line', $data);
     $this->load->view('template/footer');
-    }
+    }else if($grafikp=="area"){
+      $this->load->view('cabangolahraga/grafik_perbandingan_prasarana_area', $data);
+      $this->load->view('template/footer');
+      }
     }
     
   }

@@ -5,9 +5,9 @@ class m_usaha_peternakan extends CI_Model
 	public function tampil_usaha($tahun){
 		$thn=$tahun;
 		if($thn=='0000'){
-			$hasil=$this->db->query("SELECT id, tahun, kecamatan, desa, sum(hewan_besar) as hewan_besar, sum(hewan_kecil) as hewan_kecil, sum(unggas) as unggas FROM usaha_peternakan WHERE status='0' GROUP BY tahun");
+			$hasil=$this->db->query("SELECT id, tahun, kecamatan, sum(hewan_besar) as hewan_besar, sum(hewan_kecil) as hewan_kecil, sum(unggas) as unggas FROM usaha_peternakan WHERE status='0' GROUP BY tahun");
 		}else{
-			$hasil=$this->db->query("SELECT id, tahun, kecamatan, desa, sum(hewan_besar) as hewan_besar, sum(hewan_kecil) as hewan_kecil, sum(unggas) as unggas FROM usaha_peternakan WHERE status='0' and tahun='$thn' ");
+			$hasil=$this->db->query("SELECT id, tahun, kecamatan, sum(hewan_besar) as hewan_besar, sum(hewan_kecil) as hewan_kecil, sum(unggas) as unggas FROM usaha_peternakan WHERE status='0' and tahun='$thn' ");
 		}
 		return $hasil;
 	}
@@ -19,6 +19,11 @@ class m_usaha_peternakan extends CI_Model
 
 	public function tampil_kecamatan(){
 		$hasil=$this->db->query("SELECT * FROM master_kecamatan ");
+		return $hasil;
+	}
+
+	public function tampil_desaku(){
+		$hasil=$this->db->query("SELECT * FROM master_desa inner join master_kecamatan on master_desa.id_kecamatan = master_kecamatan.id_kecamatan");
 		return $hasil;
 	}
 

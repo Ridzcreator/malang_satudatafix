@@ -42,8 +42,8 @@
                         <thead >
                             <tr>
                                 <th style="text-align:center">Kecamatan</th>
+                                <th style="text-align:center">Desa</th>
                                 <th style="text-align:center">Tahun</th>
-                                <!-- <th style="text-align:center">Desa</th> -->
                                 <th style="text-align:center">Jumlah Usaha Peternakan Hewan Besar</th>
                                 <th style="text-align:center">Jumlah Usaha Peternakan Hewan Kecil</th>
                                 <th style="text-align:center">Jumlah Usaha Peternakan Unggas</th>
@@ -55,6 +55,9 @@
                             foreach ($data->result_array() as $a):  
                                 $id=$a['id'];
                                 $kecamatan=$a['kecamatan'];
+                                $desa_id=$a['desa'];
+                                $where = array('id_desa' => $desa_id);
+                                $desa = $this->m_usaha_peternakan->getNamaDesaWhere($where)->row()->nama_desa;
                                 $tahun=$a['tahun'];
                                 $hewan_besar=$a['hewan_besar'];
                                 $hewan_kecil=$a['hewan_kecil'];
@@ -62,6 +65,7 @@
                         ?>
                             <tr>
                                 <td style="text-align:center"><?php echo $kecamatan;?></td>
+                                <td style="text-align:center"><?php echo $desa;?></td>
                                 <td style="text-align:center"><?php echo $tahun;?></td>
                                 <td style="text-align:center"><?php echo number_format($hewan_besar,0,",",".");?></td>
                                 <td style="text-align:center"><?php echo number_format($hewan_kecil,0,",",".");?></td>

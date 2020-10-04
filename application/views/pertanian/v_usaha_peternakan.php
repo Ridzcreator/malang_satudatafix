@@ -56,7 +56,7 @@
 		                    <tr>
 		                        <th style="text-align:center">Tahun</th>
 								<th style="text-align:center">Kecamatan</th>
-								<th style="text-align:center">Desa</th>
+								<!-- <th style="text-align:center">Desa</th> -->
 		                        <th style="text-align:center">Jumlah Usaha Peternakan Hewan Besar</th>
 		                        <th style="text-align:center">Jumlah Usaha Peternakan Hewan Kecil</th>
 		                        <th style="text-align:center">Jumlah Usaha Peternakan Unggas</th>

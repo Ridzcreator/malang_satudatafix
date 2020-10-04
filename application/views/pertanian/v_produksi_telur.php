@@ -241,7 +241,7 @@
 					                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					                        <h3 class="modal-title" id="myModalLabel">Grafik Perbandingan Data</h3>
 					                    </div>
-										<?php echo form_open_multipart('C_wisatawan_menginap/grafik_perbandingan') ?>
+										<?php echo form_open_multipart('C_produksi_telur/grafik_perbandingan') ?>
 										<div class="modal-body">
 										<table>
 											<tr>
@@ -261,6 +261,7 @@
 												<option disabled selected value>Pilih Model Grafik</option>
 												<option value="bar">Grafik Bar</option>
 												<option value="line">Grafik Line</option>
+												<option value="area">Grafik area</option>
 												</select></td>
 											</tr>
 											<tr>

@@ -15,6 +15,7 @@ class C_usaha_peternakan extends CI_Controller {
         $data['data']=$this->m_usaha_peternakan->tampil_usaha($tahun);
         $data['datax']=$this->m_usaha_peternakan->tampil_tahun();
         $data['datas']=$this->m_usaha_peternakan->tampil_kecamatan();
+        $data['datad']=$this->m_usaha_peternakan->tampil_desaku();
         $this->load->view('template/header');
         $this->load->view('pertanian/v_usaha_peternakan',$data);
         $this->load->view('template/footer');
@@ -30,15 +31,15 @@ class C_usaha_peternakan extends CI_Controller {
                         $id=$a['id'];
                         $tahun=$a['tahun'];
                         $kecamatan=$a['kecamatan'];
-                        $desa_id=$a['desa'];
-                        $where = array('id_desa' => $desa_id);
-                        $desa = $this->m_usaha_peternakan->getNamaDesaWhere($where)->row()->nama_desa;
+                        // $desa_id=$a['desa'];
+                        // $where = array('id_desa' => $desa_id);
+                        // $desa = $this->m_usaha_peternakan->getNamaDesaWhere($where)->row()->nama_desa;
                         $hewan_besar=$a['hewan_besar'];
                         $hewan_kecil=$a['hewan_kecil'];
                         $unggas=$a['unggas'];
                         $temp[]=$tahun;
                         $temp[]=$kecamatan;
-                        $temp[]=$desa;
+                        // $temp[]=$desa;
                         $temp[]=number_format($a['hewan_besar'],0,",",".");
                         $temp[]=number_format($a['hewan_kecil'],0,",",".");
                         $temp[]=number_format($a['unggas'],0,",",".");

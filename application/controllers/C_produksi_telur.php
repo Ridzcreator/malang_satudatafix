@@ -107,12 +107,13 @@ class C_produksi_telur extends CI_Controller {
         $nama_unggas=$this->input->post('nama_unggas');
         $tahun=$this->input->post('tahun');
         $kecamatan=$this->input->post('kecamatan');
+        $desa=$this->input->post('desa');
         $per_butir=$this->input->post('per_butir');
         $per_kg=$this->input->post('per_kg');
         $penginput=$this->input->post('penginput');
         
 
-        $this->m_produksi_telur->proses_ubah_produksi_telur($id, $kecamatan, $nama_unggas, $tahun, $per_butir, $per_kg, $penginput);
+        $this->m_produksi_telur->proses_ubah_produksi_telur($id, $kecamatan, $desa, $nama_unggas, $tahun, $per_butir, $per_kg, $penginput);
 
         redirect('C_produksi_telur/tampil_detail_produksi_telur/'.$page.'/'.$kcmtn);
     }
@@ -155,22 +156,28 @@ class C_produksi_telur extends CI_Controller {
         list($tahun1, $tahun2) = array($tahun2, $tahun1);
       }
       $data['datap']=$datap;
-      $data['data']=$this->m_wisatawan_menginap->grafik_perbandingan_perempuankkx($tahun2, $tahun1);
+      $data['data']=$this->m_produksi_telur->grafik_perbandingan_produksi_telur($tahun2, $tahun1);
       $this->load->view('template/header');
       if($datap=="all"){
         if($grafikp=="bar"){
-            $this->load->view('pariwisata/grafik_perbandingan_menginap_bar_all', $data);
+            $this->load->view('pertanian/grafik_perbandingan_produksitelur_bar_all', $data);
             $this->load->view('template/footer');
         }else if($grafikp=="line"){
-            $this->load->view('pariwisata/grafik_perbandingan_menginap_line_all', $data);
+            $this->load->view('pertanian/grafik_perbandingan_produksitelur_line_all', $data);
             $this->load->view('template/footer');
-        }
+        }else if($grafikp=="area"){
+          $this->load->view('pertanian/grafik_perbandingan_produksitelur_area_all', $data);
+          $this->load->view('template/footer');
+      }
       }else{
       if($grafikp=="bar"){
-        $this->load->view('pariwisata/grafik_perbandingan_menginap_bar', $data);
+        $this->load->view('pertanian/grafik_perbandingan_produksitelur_bar', $data);
         $this->load->view('template/footer');
       }else if($grafikp=="line"){
-        $this->load->view('pariwisata/grafik_perbandingan_menginap_line', $data);
+        $this->load->view('pertanian/grafik_perbandingan_produksitelur_bar', $data);
+        $this->load->view('template/footer');
+      }else if($grafikp=="area"){
+        $this->load->view('pertanian/grafik_perbandingan_produksitelur_area', $data);
         $this->load->view('template/footer');
       }
       }
