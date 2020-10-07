@@ -4902,6 +4902,21 @@ function tampilGrafik()
     
 } );
 </script>
+<script type="text/javascript">
+
+         function tampilDesa()
+ {
+     var kdkec = document.getElementById("kecamatan").value;
+     $.ajax({
+         url:"<?php echo base_url();?>C_cabangolah/pilih_desa/"+kdkec+"",
+         success: function(response){
+         $("#desa").html(response);
+         },
+         dataType:"html"
+     });
+     return false;
+ }
+</script>
 
 <?php }else if($page=="C_penanaman"){ ?>
 <script type="text/javascript">
@@ -5043,6 +5058,21 @@ $("#sektor").change(function () {
     });
     
 	} );
+</script>
+<script type="text/javascript">
+
+         function tampilDesa()
+ {
+     var kdkec = document.getElementById("kecamatan").value;
+     $.ajax({
+         url:"<?php echo base_url();?>C_prasarana/pilih_desa/"+kdkec+"",
+         success: function(response){
+         $("#desa").html(response);
+         },
+         dataType:"html"
+     });
+     return false;
+ }
 </script>
 
 <?php }else if($page=="C_twr"){ ?>

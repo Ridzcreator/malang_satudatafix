@@ -14,6 +14,7 @@ class C_cabangolah extends CI_Controller {
       $periode=date('y');
       $tahun =0000;
       $data['data']=$this->m_cabangolah->tampil_cabang_olah($tahun);
+      $data['datakc']=$this->m_cabangolah->tampil_kecamatan();
       $data['datas']=$this->m_cabangolah->tampil_cabang();
       $data['datax']=$this->m_cabangolah->tampil_tahun();
       
@@ -32,12 +33,18 @@ class C_cabangolah extends CI_Controller {
           $temp = array();
             $no++;
             $id = $a['id'];
+            $kecamatan=$a['kecamatan'];
+            $desa_id=$a['desa'];
+            $where = array('id_desa' => $desa_id);
+            $desa = $this->m_cabangolah->getNamaDesaWhere($where)->row()->nama_desa;
             $co=$a['cabang_olahraga'];
             $ps=$a['prestasi'];
             $db=$a['dibina'];
             $jm=$a['jumlah'];
             $tahun=$a['tahun'];
             $temp[]=$no;
+            $temp[]=$kecamatan;
+            $temp[]=$desa;
             $temp[]=$co;
             $temp[]=$ps;
             $temp[]=$db;
@@ -120,6 +127,11 @@ class C_cabangolah extends CI_Controller {
 
      
     public function proses_input_cabang_olah(){
+      $kecamatan_id = $this->input->post('kecamatan');
+      $where = array('id_kecamatan' => $kecamatan_id);
+      $kecamatan_arr = $this->m_cabangolah->getNamaKecamatanWhere($where)->row();
+      $kecamatan = $kecamatan_arr->nama_kecamatan;
+      $desa=$this->input->post('desa');
       $co=$this->input->post('cabang_olahraga');
       $ps=$this->input->post('prestasi');
       $db= $this->input->post('dibina');
@@ -135,7 +147,7 @@ class C_cabangolah extends CI_Controller {
            }
            else {
 
-          $this->m_cabangolah->simpan_cabang_olah($co,$ps,$db,$jm,$tahun,$penginput);
+          $this->m_cabangolah->simpan_cabang_olah($kecamatan, $desa, $co,$ps,$db,$jm,$tahun,$penginput);
 
       redirect('C_cabangolah');     
     
@@ -162,5 +174,11 @@ class C_cabangolah extends CI_Controller {
       $this->m_cabangolah->delete_cabang_olah($id);
       redirect('C_cabangolah');  
     }    
+
+    public function pilih_desa(){
+      $data['kelurahan']=$this->m_cabangolah->tampil_desa($this->uri->segment(3));
+      $this->load->view('pariwisata/v_drop_down_kelurahan',$data);
+  }
+
 
 }

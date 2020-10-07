@@ -2,9 +2,9 @@
 
 class M_prasarana extends CI_Model {
     
-	public function simpan_prasarana($kec,$stadion,$spkbola,$voly,$basket,$tenis,$bt,$futsal,$gor,$aula,$kolam,$jumlah,$tahun,$penginput){
+	public function simpan_prasarana($kec, $stadion,$spkbola,$voly,$basket,$tenis,$bt,$futsal,$gor,$aula,$kolam,$jumlah,$tahun,$penginput){
 
-		$hsl=$this->db->query("INSERT INTO prasarana_olahraga (id, kcmtn, stadion, sb, bv, bb, tenis, bt, futsal, gor, aula, kr, jumlah, tahun, penginput) VALUES ('','$kec','$stadion','$spkbola','$voly','$basket','$tenis','$bt','$futsal','$gor','$aula','$kolam','$jumlah','$tahun','$penginput')");
+		$hsl=$this->db->query("INSERT INTO prasarana_olahraga (id, kcmtn, stadion, sb, bv, bb, tenis, bt, futsal, gor, aula, kr, jumlah, tahun, penginput) VALUES ('','$kec', '$desa', '$stadion','$spkbola','$voly','$basket','$tenis','$bt','$futsal','$gor','$aula','$kolam','$jumlah','$tahun','$penginput')");
 		return $hsl;
 	}
 	public function tampil_prasarana($tahun){
@@ -36,6 +36,24 @@ class M_prasarana extends CI_Model {
 		$hsl=$this->db->query("SELECT * from master_kecamatan");
 		return $hsl;
 	}
+	// public function tampil_desa($kec){
+	// 	$hasil=$this->db->query("SELECT * FROM master_desa where id_kecamatan='$kec'");
+	// 	return $hasil;
+	// }
+	// public function getNamaKecamatanWhere($where){
+	// 	$this->db->select('*');
+	// 	$this->db->from('master_kecamatan');
+	// 	$this->db->where($where);
+	// 	$query = $this->db->get();
+	// 	return $query;
+	// }
+	// public function getNamaDesaWhere($where){
+	// 	$this->db->select('*');
+	// 	$this->db->from('master_desa');
+	// 	$this->db->where($where);
+	// 	$query = $this->db->get();
+	// 	return $query;
+	// }
 	public function tampil_data_prasarana($id){
 		$hasil=$this->db->query("SELECT * FROM prasarana_olahraga WHERE status='0'");
 		return $hasil;

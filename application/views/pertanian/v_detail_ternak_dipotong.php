@@ -208,7 +208,7 @@
                         <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h3 class="modal-title" id="myModalLabel">Edit Wisatawan Menginap</h3>
+                                        <h3 class="modal-title" id="myModalLabel">Edit Detail Ternak Dipotong</h3>
                                     </div>
                                     <?php echo form_open_multipart('C_ternak_dipotong/ubah_ternak_dipotong/'.$page.'/'.$kcmtn) ?>
 

@@ -297,4 +297,10 @@ public function tambah_detail_prasarana(){
     redirect('C_prasarana/tampil_data_prasarana');  
   }    
 
-}
+//   public function pilih_desa(){
+//     $data['kelurahan']=$this->M_prasarana->tampil_desa($this->uri->segment(3));
+//     $this->load->view('pariwisata/v_drop_down_kelurahan',$data);
+// }
+
+
+}?>

@@ -2,10 +2,10 @@
 
 class M_cabangolah extends CI_Model {
     
-	public function simpan_cabang_olah($co,$ps,$db,$jm,$tahun,$penginput){
+	public function simpan_cabang_olah($kecamatan, $desa, $co,$ps,$db,$jm,$tahun,$penginput){
 		$jumlah= $ps+$db;
 		
-		$hsl=$this->db->query("INSERT INTO cabang_olahraga (id, cabang_olahraga, prestasi, dibina, jumlah, tahun, penginput) VALUES ('','$co','$ps','$db', '$jumlah', '$tahun', '$penginput')");
+		$hsl=$this->db->query("INSERT INTO cabang_olahraga (id, kecamatan, desa, cabang_olahraga, prestasi, dibina, jumlah, tahun, penginput) VALUES ('', '$kecamatan', '$desa', '$co','$ps','$db', '$jumlah', '$tahun', '$penginput')");
 		return $hsl;
 	}
 	public function tampil_cabang_olah($tahun){
@@ -16,6 +16,32 @@ class M_cabangolah extends CI_Model {
 			$hsl=$this->db->query("SELECT * from cabang_olahraga where tahun='$thn' and status='0'");
 		}
 		return $hsl;
+	}
+	public function tampil_kecamatan(){
+		$hasil=$this->db->query("SELECT * FROM master_kecamatan ");
+		return $hasil;
+	}
+	public function tampil_desa($kecamatan){
+		$hasil=$this->db->query("SELECT * FROM master_desa where id_kecamatan='$kecamatan'");
+		return $hasil;
+	}
+	public function tampil_desaku(){
+		$hasil=$this->db->query("SELECT * FROM master_desa inner join master_kecamatan on master_desa.id_kecamatan = master_kecamatan.id_kecamatan");
+		return $hasil;
+	}
+	public function getNamaKecamatanWhere($where){
+		$this->db->select('*');
+		$this->db->from('master_kecamatan');
+		$this->db->where($where);
+		$query = $this->db->get();
+		return $query;
+	}
+	public function getNamaDesaWhere($where){
+		$this->db->select('*');
+		$this->db->from('master_desa');
+		$this->db->where($where);
+		$query = $this->db->get();
+		return $query;
 	}
 	public function tampil_cabang_olahmax($tahun){
 		$thn=$tahun;

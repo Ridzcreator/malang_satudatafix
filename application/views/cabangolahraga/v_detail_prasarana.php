@@ -36,6 +36,7 @@
                                 <tr>
                                     <th style="text-align:center; vertical-align: middle;">No</th>
                                     <th style="text-align:center; vertical-align: middle;">Kecamatan</th>
+                                    <!-- <th style="text-align:center; vertical-align: middle;">Desa</th> -->
                                     <th style="text-align:center; vertical-align: middle;">Tahun</th>
                                     <th style="text-align:center; vertical-align: middle;">Stadion</th>
                                     <th style="text-align:center; vertical-align: middle;">SB</th>
@@ -72,6 +73,7 @@
                                 $no++; 
                     $id = $a['id'];
                     $kec=$a['kcmtn'];
+                    // $desa=$a['desa'];
                     $tahun=$a['tahun'];
                     $stadion=$a['stadion'];
                     $spkbola=$a['sb'];
@@ -101,6 +103,7 @@
                                 <tr>
                                     <td style="text-align:center"><?php echo $no;?></td>
                                     <td style="text-align:center"><?php echo $kec;?></td>
+                                    <!-- <td style="text-align:center"><?php echo $desa;?></td> -->
                                     <td style="text-align:center"><?php echo $tahun;?></td>
                                     <td style="text-align:center"><?php echo $stadion;?></td>
                                     <td style="text-align:center"><?php echo $spkbola;?></td>
@@ -156,10 +159,10 @@
             <tr>
                 <td style="padding:  10px"> <label>Kecamatan</label></td><td>:</td>
                 <td style="padding:  10px">
-                <select name="kecamatan" id="kecamatan" class="form-control" required>
+                <select name="kecamatan" id="kecamatan" class="form-control" required onChange="tampilDesa()" >
                 <?php foreach ($datas->result() as $row) {
                     ?>
-                <option value="<?php echo $row->nama_kecamatan ?>"><?php echo $row->nama_kecamatan ?>   
+                <option value="<?php echo $row->id_kecamatan ?>"><?php echo $row->nama_kecamatan ?>   
                 </option>
                     <?php
                                             }
@@ -167,6 +170,15 @@
                 </select>
                 </td>
             </tr>
+            <!-- <tr>
+				<td style="padding:  10px"><label >Desa</label></td>
+					<td>:</td>
+					<td style="padding:  10px">
+						<select name="desa" class="form-control" id="desa">
+                            <option value="Pilih Desa">- Pilih Desa -</option>
+                        </select>
+					</td>
+			</tr> -->
             <tr>
                 <td style="padding:  10px"><label>Stadion</label></td><td>:</td>
                 <td style="padding:  10px"><input name="stadion" class="form-control" type="text" placeholder="Banyak Stadion" onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off" required></td>

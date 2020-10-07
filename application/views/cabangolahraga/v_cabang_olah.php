@@ -48,6 +48,8 @@
               <thead>
                     <tr>
                         <th>No</th>
+                        <th>Kecamatan</th>
+                        <th>Desa</th>
                         <th>Cabang Olahraga</th>
                         <td>Prestasi</td>
                         <td>Dibina</td>
@@ -58,19 +60,21 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
+                <!-- <tfoot>
                     <th style="text-align:center;  " colspan="2">Jumlah</th>
                     <th></th>
                     <th></th>
                     <th></th>
                     <th style="text-align:center; " colspan="2" ></th>
-                </tfoot>
+                </tfoot> -->
                 
             </table>
 
              <?php
                 foreach ($data->result_array() as $a) {
                     $id = $a['id'];
+                    $kecamatan = $a['kecamatan'];
+                    $desa = $a['desa'];
                     $co=$a['cabang_olahraga'];
                     $ps=$a['prestasi'];
                     $db=$a['dibina'];
@@ -92,6 +96,15 @@
                             <input class="form-control" type="hidden" name="jumlah" value="<?php echo $jm;?>">
                    
                     <table>
+                        <tr>
+                            <td style="padding:  10px"> <label>Kecamatan</label></td><td>:</td>
+                            <td style="padding:  10px"><input name="kecamatan" class="form-control" value="<?php echo $kecamatan;?>" style="width:335px;" readonly></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:  10px"> <label>Desa</label></td><td>:</td>
+                           
+                            <td style="padding:  10px"><input name="desa" class="form-control" value="<?php echo $nama_desa;?>" style="width:335px;" readonly></td>
+                        </tr>
                        <tr>
                             <td style="padding:  10px"> <label>Cabang Olahraga</label></td><td>:</td>
                             <td style="padding:  10px"><input name="cabang_olahraga" class="form-control" value="<?php echo $co;?>" style="width:335px;" readonly></td>
@@ -180,6 +193,32 @@
                                         ?>
                                     </select></td>
                         </tr>
+                        <tr>
+							<td style="padding:  10px"><label >Kecamatan</label></td>
+								<td>:</td>
+								<td style="padding:  10px">
+								<select name="kecamatan" style="width:335px;" id="kecamatan" class="form-control" required onChange="tampilDesa()" >
+								<option value=""> Pilih Kecamatan </option>
+									<?php foreach ($datakc->result() as $row) {
+										?>
+									<option value="<?php echo $row->id_kecamatan; ?>"><?php echo $row->nama_kecamatan; ?></option>
+									<?php
+										}
+										?>
+								</select>
+							</td>
+						</tr>    
+
+                        <tr>
+							<td style="padding:  10px"><label >Desa</label></td>
+							<td>:</td>
+								<td style="padding:  10px">
+								<select name="desa" class="form-control" id="desa">
+                                    <option value="Pilih Desa">- Pilih Desa -</option>
+                                </select>
+								</td>
+						</tr>
+
                         <tr>
                             <td style="padding:  10px"><label>Prestasi</label></td><td>:</td>
                             <td style="padding:  10px"><input name="prestasi" class="form-control" type="text" placeholder="Jumlah Prestasi" style="width:335px;" onkeypress="return event.charCode >= 48 && event.charCode <=57" autocomplete="off" required></td>
