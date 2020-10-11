@@ -2479,10 +2479,10 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                        <li class="<?php if ($page == "C_potensi_unggulan") {
+                        <li class="<?php if ($page == "c_master_wisata") {
                             echo 'active';
                         } ?>">  
-                                <a href="<?= base_url('C_potensi_unggulan'); ?>"><i class="fa fa-arrow-right"></i>Master Jenis Wisata</a>
+                                <a href="<?= base_url('c_master_wisata'); ?>"><i class="fa fa-arrow-right"></i>Master Jenis Wisata</a>
 
                             </li>
                             <li class="<?php if ($page == "C_potensi_unggulan") {
@@ -2627,7 +2627,7 @@
 
                     <li class="<?php if ($m20 == 0) {
                             echo 'hidden';
-                        } if ($page == "master_tajukbuku" || $page == "jumlahkoleksibuku" || $page == "pengunjungperpusjkel" || $page == "pengunjungperpustpend" || $page == "pengunjungperpusspekerjaan") {
+                        } if ($page=="C_master_perpustakaan"|| $page == "master_tajukbuku" || $page == "jumlahkoleksibuku" || $page == "pengunjungperpusjkel" || $page == "pengunjungperpustpend" || $page == "pengunjungperpusspekerjaan") {
                             echo 'active';
                         } ?> treeview">
                         <a href="#">
@@ -2637,6 +2637,9 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li class="<?php if($page=="C_master_perpustakaan"){echo 'active';}?>">  
+                                <a href="<?= base_url('C_master_perpustakaan'); ?>"><i class="fa fa-arrow-right"></i>Master Perpustakaan</a>
+                            </li>
                             <li class="<?php if ($page == "master_tajukbuku") {
                             echo 'active';
                         } ?>">  

@@ -225,6 +225,7 @@
 							<option value="all">Semua Data</option>
 							<option value="1">Jumlah Total Domestik</option>
 							<option value="2">Jumlah Total Mancanegara</option>
+							
 							</select></td>
 						</tr>
 						<tr>

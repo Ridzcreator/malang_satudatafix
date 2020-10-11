@@ -159,13 +159,20 @@ class C_wisatawan_menginap extends CI_Controller {
         }else if($grafikp=="line"){
             $this->load->view('pariwisata/grafik_perbandingan_menginap_line_all', $data);
             $this->load->view('template/footer');
-        }
+        }else if($grafikp=="pie"){
+          $this->load->view('pariwisata/grafik_perbandingan_menginap_pie_all', $data);
+          $this->load->view('template/footer');
+      }
       }else{
       if($grafikp=="bar"){
         $this->load->view('pariwisata/grafik_perbandingan_menginap_bar', $data);
         $this->load->view('template/footer');
       }else if($grafikp=="line"){
         $this->load->view('pariwisata/grafik_perbandingan_menginap_line', $data);
+        $this->load->view('template/footer');
+      }
+      else if($grafikp=="pie"){
+        $this->load->view('pariwisata/grafik_perbandingan_menginap_pie', $data);
         $this->load->view('template/footer');
       }
       }
